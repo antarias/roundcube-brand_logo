@@ -2,6 +2,8 @@
 
 Shows the sender's brand logo in the message header, in the place of the contact photo, and as a round avatar in the message list, similar to what Yahoo Mail or Gmail do. Senders without a picture get their initial on a colored circle in the list.
 
+![Message list with sender logos and a message showing the PayPal BIMI logo](docs/screenshot.png)
+
 Sources, in order:
 
 1. **BIMI**: the logo the sender domain publishes in DNS (`default._bimi.<domain>`).
