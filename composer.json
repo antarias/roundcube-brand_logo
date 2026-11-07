@@ -1,0 +1,33 @@
+{
+    "name": "antarias/brand_logo",
+    "type": "roundcube-plugin",
+    "description": "Shows the sender's brand logo as contact photo: BIMI logos with DMARC enforcement, falling back to the website icon.",
+    "keywords": ["roundcube", "plugin", "bimi", "logo", "avatar", "favicon", "dmarc"],
+    "homepage": "https://github.com/antarias/roundcube-brand_logo",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Antonio Arias",
+            "email": "antonio@antarias.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/antarias/roundcube-brand_logo/issues",
+        "source": "https://github.com/antarias/roundcube-brand_logo"
+    },
+    "require": {
+        "php": ">=8.1",
+        "ext-curl": "*",
+        "roundcube/plugin-installer": ">=0.3.5"
+    },
+    "suggest": {
+        "ext-imagick": "Converts ICO/WebP icons and pads logos to squares",
+        "ext-gd": "Resizes PNG/JPEG/GIF/WebP icons when Imagick is not available"
+    },
+    "extra": {
+        "roundcube": {
+            "min-version": "1.6.0"
+        }
+    }
+}

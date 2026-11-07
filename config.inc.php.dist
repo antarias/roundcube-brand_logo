@@ -1,0 +1,45 @@
+<?php
+
+// Default for the per-user option "Show sender brand logos" (Preferences > Displaying Messages).
+// Add 'brand_logo_enabled' to 'dont_override' to force it for everyone.
+$config['brand_logo_enabled'] = true;
+
+// Default for "Show sender logos in the message list" (Preferences > Mailbox View):
+// a round avatar left of each message, with the sender initial when there is no picture.
+$config['brand_logo_list'] = true;
+
+// Logo sources, tried in order:
+//   'bimi'    - logo published by the sender domain in DNS (BIMI); requires an enforced DMARC policy
+//   'favicon' - icon of the sender's website (apple-touch-icon, <link rel="icon">, /favicon.ico)
+//   'service' - external favicon service set in 'brand_logo_service_url' (sends the sender domain to it)
+$config['brand_logo_sources'] = ['bimi', 'favicon'];
+
+// URL template for the 'service' source, %d is replaced by the sender's organizational domain.
+// Example: 'https://www.google.com/s2/favicons?domain=%d&sz=128'
+$config['brand_logo_service_url'] = null;
+
+// Only use 'favicon'/'service' logos for domains whose DMARC policy is quarantine or reject (pct=100).
+// This keeps a forged sender from getting a real brand's logo. BIMI always requires it.
+$config['brand_logo_favicon_require_dmarc'] = true;
+
+// Output size in pixels (logos are padded to a transparent square PNG)
+$config['brand_logo_size'] = 128;
+
+// Ignore icons smaller than this (in pixels)
+$config['brand_logo_min_size'] = 32;
+
+// Seconds to keep a found logo, and to remember a domain without logo
+$config['brand_logo_ttl'] = 7 * 86400;
+$config['brand_logo_negative_ttl'] = 86400;
+
+// Shared cache backend ('db', 'redis', 'memcache', 'apc') and its maximum lifetime
+$config['brand_logo_cache'] = 'db';
+$config['brand_logo_cache_ttl'] = '30d';
+
+// Network limits for each download
+$config['brand_logo_timeout'] = 5;
+$config['brand_logo_max_bytes'] = 512 * 1024;
+
+// Path to rsvg-convert to turn SVG logos into PNG; null = autodetect.
+// Without it (or Imagick with SVG support) SVG logos are served as sandboxed SVG.
+$config['brand_logo_rsvg_convert'] = null;
